@@ -85,8 +85,7 @@ function cekTanggal() {
 
     if (digit === TANGGAL_LAHIR) {
         pesanSalah("salah-3", false);
-        /* Musik latar menyala (masih dalam alur klik → gesture aktif) */
-        if (typeof nyalakanMusik === "function") nyalakanMusik();
+        /* Musik TIDAK di sini — menyala saat tombol "Lihat disini" diklik */
         tampilkanLangkah("langkah-sukses");
         return;
     }

@@ -17,7 +17,7 @@ ultah-mesha/
 ├── js/
 │   ├── kunci.js     SATU file JS logika waktu: penjaga, hitung mundur, toast
 │   ├── tebak.js     kuis tebak-tebakan 3 langkah (halaman kejutan)
-│   └── musik.js     musik latar: nyala otomatis setelah kuis selesai
+│   └── musik.js     musik latar: nyala saat tombol "Lihat disini" diklik
 ├── music/           lagu latar (mp3) untuk halaman kejutan
 ├── img/             foto1.jpg … foto4.jpg (tidak dipakai, sisa lama)
 └── README.md
@@ -75,7 +75,7 @@ localStorage, jadi pengecekan selalu berdasarkan waktu nyata.
 | Jawaban benar soal 3 (tanggal lahir) | `js/tebak.js` — konstanta `TANGGAL_LAHIR` (`"10112006"` = 10-11-2006) |
 | Link tombol "Lihat isinya" (web kedua / Canva) | `kejutan.html` — atribut `href` pada `<a class="btn btn-lihat">` |
 | Waktu arsip terbuka | `js/kunci.js` — `WAKTU_BUKA` |
-| Musik latar | `js/musik.js` — `NAMA_LAGU` + `src` `<audio>` di `kejutan.html` |
+| Musik latar | `js/musik.js` — `NAMA_LAGU` + `MULAI_DETIK` + `src` `<audio>` di `kejutan.html` |
 | Warna | `css/style.css` — variabel di `:root` |
 
 ## Catatan
@@ -93,11 +93,14 @@ localStorage, jadi pengecekan selalu berdasarkan waktu nyata.
   tidak muncul sama sekali.
 - JavaScript hanya untuk logika waktu (penjaga, hitung mundur, toast)
   dan kuis — animasi UI (fade-in, goyang, denyut) murni CSS.
-- Musik latar (`music/*.mp3`) menyala otomatis begitu tanggal lahir
-  dijawab benar, di-loop selama halaman `kejutan.html` terbuka, dan
-  berhenti saat tab ditutup. Tanpa tombol kontrol. Untuk mengganti
-  lagu: timpa file di `folder music/` lalu samakan namanya dengan
-  `NAMA_LAGU` di `js/musik.js` dan `src` `<audio>` di `kejutan.html`.
-  Jika browser memblokir autoplay, musik mulai pada sentuhan pertama
-  berikutnya di layar.
+- Musik latar (`music/*.mp3`) menyala saat tombol **"Lihat disini"
+  diklik** (bukan saat kuis selesai), mulai dari detik ke-6 (lewati
+  intro, atur lewat `MULAI_DETIK` di `js/musik.js`), di-loop selama
+  halaman `kejutan.html` terbuka, dan berhenti saat tab ditutup.
+  Tanpa tombol kontrol. Untuk mengganti lagu: timpa file di
+  `folder music/` lalu samakan namanya dengan `NAMA_LAGU` di
+  `js/musik.js` dan `src` `<audio>` di `kejutan.html`. Loop-nya
+  manual lewat event `ended` (bukan atribut `loop` HTML — atribut itu
+  selalu mengulang dari detik 0). Jika browser memblokir autoplay,
+  musik mulai pada sentuhan pertama berikutnya di layar.
 - Mobile-first, dengan penyesuaian di `min-width: 768px`.

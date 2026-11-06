@@ -11,15 +11,16 @@
     <link rel="stylesheet" href="css/kejutan.css">
     <!-- defer: tebak.js mengurus kuis 3 langkah setelah DOM siap -->
     <script src="js/tebak.js" defer></script>
-    <!-- defer: musik.js mengurus musik latar yang menyala setelah kuis selesai -->
+    <!-- defer: musik.js mengurus musik latar yang menyala saat tombol Lihat disini diklik -->
     <script src="js/musik.js" defer></script>
 </head>
 <body class="masuk">
 
-    <!-- Musik latar: loop, tanpa controls; disalakan JS setelah tanggal lahir benar -->
+    <!-- Musik latar: tanpa controls; disalakan JS saat tombol Lihat disini diklik.
+         Loop manual di musik.js (event "ended") supaya selalu mulai dari detik 6 -->
     <audio id="musik-latar"
            src="music/Nadin Amizah - Ah (Official Lyric Video) [youaretube.com].mp3"
-           loop preload="auto"></audio>
+           preload="auto"></audio>
 
     <main class="halaman-kejutan">
 
@@ -27,7 +28,7 @@
         <header class="judul-kejutan">
             <!-- GANTI: kalimat pembuka di bawah ini -->
             <h1>Akhirnya, kamu menemukannya</h1>
-            <p class="sapaan">Tiga pertanyaan dulu. Jawab dengan jujur — hanya dengan begitu arsip ini terbuka.</p>
+            <p class="sapaan">aioo sayang main tebak tebakan duloo</p>
         </header>
 
         <!-- Kuis tebak-tebakan: harus terjawab sebelum link muncul -->
@@ -36,7 +37,7 @@
             <!-- GANTI: soal 1 (jawaban bebas, asal tidak kosong) -->
             <div class="langkah aktif" id="langkah-1">
                 <p class="tanya">Pertanyaan 1 dari 3</p>
-                <h2 class="soal">Aku sayang kamu nggak?</h2>
+                <h2 class="soal">Rate kelayakan aku jadi pacarmu dari 1-10, wajib sertakan alasan ya!</h2>
                 <input type="text" class="isian" id="jawab-1" autocomplete="off"
                        placeholder="Ketik jawabanmu..." aria-label="Jawaban pertanyaan 1">
                 <p class="salah" id="salah-1" role="alert">Isi dulu jawabannya, ya</p>
@@ -46,7 +47,7 @@
             <!-- GANTI: soal 2 (jawaban bebas, asal tidak kosong) -->
             <div class="langkah" id="langkah-2" hidden>
                 <p class="tanya">Pertanyaan 2 dari 3</p>
-                <h2 class="soal">Siapa orang paling cakep di dunia?</h2>
+                <h2 class="soal">Sebutkan 3 hal yang bikin kamu senyum tiap inget aku</h2>
                 <input type="text" class="isian" id="jawab-2" autocomplete="off"
                        placeholder="Ketik jawabanmu..." aria-label="Jawaban pertanyaan 2">
                 <p class="salah" id="salah-2" role="alert">Isi dulu jawabannya, ya</p>
@@ -92,7 +93,7 @@
             <!-- Hadiah: link muncul setelah soal ke-3 benar -->
             <div class="langkah" id="langkah-sukses" hidden>
                 <h2 class="soal">Akses diberikan</h2>
-                <p class="sapaan">Semua jawaban benar. Isi arsipnya ada di tautan berikut.</p>
+                <p class="sapaan">yeeeaay amu bener iaa, coba klik di bawah sayang</p>
                 <!-- GANTI: ganti href kalau tujuan link berubah -->
                 <a href="https://ulangtahunmesha.my.canva.site/" class="btn btn-lihat"
                    target="_blank" rel="noopener">Lihat disini</a>
