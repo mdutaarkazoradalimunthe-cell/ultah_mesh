@@ -1,0 +1,271 @@
+/* =========================================================
+   style.css — gaya global + halaman index
+   Gaya: editorial elegan — latar off-white keunguan, tipografi
+   serif + sans, aksen lavender tenang, banyak ruang kosong.
+   Mobile-first, diperbarui untuk layar lebar di bawah
+   ========================================================= */
+
+/* Satu-satunya library eksternal: Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap');
+
+/* Palet: off-white keunguan + lavender muted + plum gelap */
+:root {
+    --latar: #F6F4FA;
+    --permukaan: #FFFFFF;
+    --ungu-lembut: #E9E3F4;
+    --ungu: #B9A7D8;
+    --ungu-tua: #6E5A96;
+    --tinta: #2C2436;
+    --tinta-redup: #6B6178;
+    --garis: rgba(44, 36, 54, 0.08);
+    --bayang: 0 1px 2px rgba(44, 36, 54, 0.04), 0 8px 28px rgba(110, 90, 150, 0.08);
+    --bayang-besar: 0 2px 4px rgba(44, 36, 54, 0.04), 0 16px 48px rgba(110, 90, 150, 0.12);
+}
+
+/* Reset dasar */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: var(--tinta);
+    background-color: var(--latar);
+    min-height: 100vh;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--tinta);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Animasi masuk halaman (fade-in halus) */
+@keyframes fadeDariAtas {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.masuk {
+    animation: fadeDariAtas 0.7s ease-out both;
+}
+
+/* =========================================================
+   HALAMAN INDEX — kartu putih bersih di tengah latar ungu pucat
+   ========================================================= */
+
+.halaman-index {
+    position: relative;
+    min-height: calc(100vh - 2.4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3.5rem 1.75rem 3rem;
+    max-width: 560px;
+    margin: 1.2rem auto;
+    background-color: var(--permukaan);
+    border: 1px solid var(--garis);
+    border-radius: 12px;
+    box-shadow: var(--bayang-besar);
+    z-index: 2;
+}
+
+/* Label kecil di atas judul — gaya editorial */
+.halaman-index .pembuka::before {
+    content: 'UNTSUR KEJUTAN';
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ungu-tua);
+    margin-bottom: 1.25rem;
+}
+
+.halaman-index .pembuka .judul {
+    font-size: clamp(2rem, 7vw, 2.85rem);
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+/* Pengantar: pendek, tenang, kolom sempit */
+.pengantar {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: var(--tinta-redup);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    max-width: 34ch;
+    margin: 0 auto;
+}
+
+/* Hitung mundur — empat angka editorial, garis tipis */
+.hitung-mundur {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 400px;
+    margin: 2.5rem 0 1.5rem;
+    border-top: 1px solid var(--garis);
+    border-bottom: 1px solid var(--garis);
+}
+
+.kotak {
+    padding: 1.15rem 0.3rem 1rem;
+    position: relative;
+}
+
+.kotak + .kotak {
+    border-left: 1px solid var(--garis);
+}
+
+.angka {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.55rem, 6.5vw, 2rem);
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+    color: var(--tinta);
+    letter-spacing: -0.02em;
+}
+
+.label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--tinta-redup);
+    margin-top: 0.35rem;
+}
+
+/* Stempel jadwal — kapsul tipis */
+.pemberitahuan {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ungu-tua);
+    background: var(--ungu-lembut);
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+}
+
+/* Tombol utama — solid lavender, tanpa dekorasi karcis */
+.btn {
+    display: inline-block;
+    margin-top: 1.75rem;
+    padding: 0.9rem 2.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--permukaan);
+    background: var(--ungu-tua);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(110, 90, 150, 0.22);
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover,
+.btn:focus {
+    background: #5C4A82;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(110, 90, 150, 0.28);
+    outline: none;
+}
+
+/* Status aktif: waktu sudah tiba */
+.btn.aktif {
+    background: var(--ungu-tua);
+    color: var(--permukaan);
+    animation: denyut 2.4s ease-in-out infinite;
+}
+
+@keyframes denyut {
+    0%, 100% { box-shadow: 0 2px 8px rgba(110, 90, 150, 0.22); }
+    50% { box-shadow: 0 2px 8px rgba(110, 90, 150, 0.22), 0 0 0 6px rgba(185, 167, 216, 0.35); }
+}
+
+/* Goyang kecil saat tombol diklik sebelum waktunya */
+.btn.goyang {
+    animation: goyang 0.45s ease-in-out 2;
+}
+
+@keyframes goyang {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+/* Toast — pita ungu lembut di bawah layar */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    max-width: 90vw;
+    padding: 0.85rem 1.5rem;
+    background: var(--tinta);
+    color: var(--latar);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: var(--bayang-besar);
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 12px;
+    transition: opacity 0.3s ease, translate 0.3s ease, visibility 0.3s;
+    z-index: 50;
+}
+
+.toast.tampil {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+@media (min-width: 768px) {
+    .pengantar {
+        font-size: 1.08rem;
+    }
+
+    .halaman-index {
+        margin: 2.5rem auto;
+        min-height: calc(100vh - 5rem);
+        padding: 4.25rem 3.5rem 3.75rem;
+    }
+
+    .kotak {
+        padding: 1.35rem 0.4rem 1.15rem;
+    }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PENJAGA: dicek SEBELUM konten diparse. Belum waktunya → langsung
+         dialihkan ke index.html dan isi halaman tidak pernah sempat tampil. -->
+    <script src="js/kunci.js" data-jaga></script>
+    <title>Arsip Terbuka — Mesha</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/kejutan.css">
+    <!-- defer: tebak.js mengurus kuis 3 langkah setelah DOM siap -->
+    <script src="js/tebak.js" defer></script>
+    <!-- defer: musik.js mengurus musik latar yang menyala setelah kuis selesai -->
+    <script src="js/musik.js" defer></script>
+</head>
+<body class="masuk">
+
+    <!-- Musik latar: loop, tanpa controls; disalakan JS setelah tanggal lahir benar -->
+    <audio id="musik-latar"
+           src="music/Nadin Amizah - Ah (Official Lyric Video) [youaretube.com].mp3"
+           loop preload="auto"></audio>
+
+    <main class="halaman-kejutan">
+
+        <!-- Pembuka arsip -->
+        <header class="judul-kejutan">
+            <!-- GANTI: kalimat pembuka di bawah ini -->
+            <h1>Akhirnya, kamu menemukannya</h1>
+            <p class="sapaan">Tiga pertanyaan dulu. Jawab dengan jujur — hanya dengan begitu arsip ini terbuka.</p>
+        </header>
+
+        <!-- Kuis tebak-tebakan: harus terjawab sebelum link muncul -->
+        <section class="tebak" id="tebak" aria-label="Tebak-tebakan sebelum kejutan">
+
+            <!-- GANTI: soal 1 (jawaban bebas, asal tidak kosong) -->
+            <div class="langkah aktif" id="langkah-1">
+                <p class="tanya">Pertanyaan 1 dari 3</p>
+                <h2 class="soal">Aku sayang kamu nggak?</h2>
+                <input type="text" class="isian" id="jawab-1" autocomplete="off"
+                       placeholder="Ketik jawabanmu..." aria-label="Jawaban pertanyaan 1">
+                <p class="salah" id="salah-1" role="alert">Isi dulu jawabannya, ya</p>
+                <button type="button" class="btn" data-lanjut="1">Lanjut →</button>
+            </div>
+
+            <!-- GANTI: soal 2 (jawaban bebas, asal tidak kosong) -->
+            <div class="langkah" id="langkah-2" hidden>
+                <p class="tanya">Pertanyaan 2 dari 3</p>
+                <h2 class="soal">Siapa orang paling cakep di dunia?</h2>
+                <input type="text" class="isian" id="jawab-2" autocomplete="off"
+                       placeholder="Ketik jawabanmu..." aria-label="Jawaban pertanyaan 2">
+                <p class="salah" id="salah-2" role="alert">Isi dulu jawabannya, ya</p>
+                <button type="button" class="btn" data-lanjut="2">Lanjut →</button>
+            </div>
+
+            <!-- Soal 3: tanggal lahir, dijawab lewat papan tombol di layar -->
+            <div class="langkah" id="langkah-3" hidden>
+                <p class="tanya">Pertanyaan 3 dari 3</p>
+                <h2 class="soal">Masukkan tanggal lahirku, dd-mm-yyyy</h2>
+
+                <div class="kartu-pin" id="kartu-pin">
+                    <!-- 8 kotak digit: span, bukan input → keyboard HP tidak muncul -->
+                    <div class="slot-digit" id="slot-digit" aria-label="Tanggal lahir 8 digit">
+                        <span class="kotak-digit"></span><span class="kotak-digit"></span>
+                        <span class="kotak-digit"></span><span class="kotak-digit"></span>
+                        <span class="kotak-digit"></span><span class="kotak-digit"></span>
+                        <span class="kotak-digit"></span><span class="kotak-digit"></span>
+                    </div>
+
+                    <!-- Papan tombol angka di layar -->
+                    <div class="papan-tombol" id="papan-tombol">
+                        <button type="button" class="tombol-angka" data-angka="1">1</button>
+                        <button type="button" class="tombol-angka" data-angka="2">2</button>
+                        <button type="button" class="tombol-angka" data-angka="3">3</button>
+                        <button type="button" class="tombol-angka" data-angka="4">4</button>
+                        <button type="button" class="tombol-angka" data-angka="5">5</button>
+                        <button type="button" class="tombol-angka" data-angka="6">6</button>
+                        <button type="button" class="tombol-angka" data-angka="7">7</button>
+                        <button type="button" class="tombol-angka" data-angka="8">8</button>
+                        <button type="button" class="tombol-angka" data-angka="9">9</button>
+                        <button type="button" class="tombol-angka tombol-hapus" data-hapus
+                                aria-label="Hapus satu angka">Hapus</button>
+                        <button type="button" class="tombol-angka" data-angka="0">0</button>
+                        <button type="button" class="tombol-angka tombol-hapus"
+                                data-batal aria-label="Kosongkan semua">Batal</button>
+                    </div>
+                </div>
+
+                <p class="salah" id="salah-3" role="alert">Belum tepat, coba lagi</p>
+            </div>
+
+            <!-- Hadiah: link muncul setelah soal ke-3 benar -->
+            <div class="langkah" id="langkah-sukses" hidden>
+                <h2 class="soal">Akses diberikan</h2>
+                <p class="sapaan">Semua jawaban benar. Isi arsipnya ada di tautan berikut.</p>
+                <!-- GANTI: ganti href kalau tujuan link berubah -->
+                <a href="https://ulangtahunmesha.my.canva.site/" class="btn btn-lihat"
+                   target="_blank" rel="noopener">Lihat disini</a>
+            </div>
+
+        </section>
+
+    </main>
+</body>
+</html>

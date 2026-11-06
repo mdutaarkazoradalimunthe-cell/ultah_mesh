@@ -1,0 +1,294 @@
+/* =========================================================
+   kejutan.css — khusus halaman kejutan (kejutan.html)
+   Gaya editorial elegan: kartu putih, aksen lavender,
+   tanpa washi/klip/perangko (confetti & balon dihapus)
+   ========================================================= */
+
+/* Posisi halaman di tengah layar (vertikal + horizontal).
+   margin auto di anak: kalau konten lebih tinggi dari layar,
+   halaman tetap bisa di-scroll tanpa memotong bagian atas */
+.halaman-kejutan {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem;
+    text-align: center;
+}
+
+.halaman-kejutan .judul-kejutan { margin-top: auto; }
+.halaman-kejutan .tebak { margin-bottom: auto; }
+
+/* =========================================================
+   UCAPAN ULANG TAHUN
+   ========================================================= */
+.judul-kejutan {
+    position: relative;
+    padding-top: 0.5rem;
+}
+
+/* Label kecil di atas judul */
+.judul-kejutan::before {
+    content: 'AKSES DIBERIKAN';
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ungu-tua);
+    margin-bottom: 1.1rem;
+}
+
+.judul-kejutan h1 {
+    font-size: clamp(2.1rem, 8vw, 3.1rem);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.sapaan {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--tinta-redup);
+    font-size: clamp(1.2rem, 4vw, 1.45rem);
+    line-height: 1.5;
+    max-width: 32ch;
+    margin: 0 auto;
+}
+
+/* =========================================================
+   KUIS TEBAK-TEBAKAN (3 langkah) — kartu putih bersih
+   ========================================================= */
+.tebak {
+    width: 100%;
+    max-width: 440px;
+    margin-top: 2.75rem;
+}
+
+/* Kartu nota: putih, border tipis, bayangan lembut */
+.langkah {
+    position: relative;
+    background-color: var(--permukaan);
+    border: 1px solid var(--garis);
+    border-radius: 12px;
+    box-shadow: var(--bayang-besar);
+    padding: 2.25rem 1.75rem 2rem;
+    animation: fadeDariAtas 0.45s ease-out both;
+}
+
+.langkah[hidden] { display: none; }
+
+/* Langkah aktif: sedikit garis aksen di atas */
+.langkah.aktif::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 3px;
+    background: var(--ungu);
+    border-radius: 0 0 3px 3px;
+}
+
+.tanya {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ungu-tua);
+    margin-bottom: 0.85rem;
+}
+
+.soal {
+    font-size: clamp(1.35rem, 5vw, 1.7rem);
+    font-weight: 600;
+    margin-bottom: 1.4rem;
+    line-height: 1.3;
+}
+
+/* Isian jawaban (soal 1 & 2) */
+.isian {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--tinta);
+    text-align: center;
+    background: var(--latar);
+    border: 1px solid var(--garis);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.isian::placeholder {
+    color: var(--tinta-redup);
+    font-weight: 300;
+}
+
+.isian:focus {
+    border-color: var(--ungu);
+    background: var(--permukaan);
+    box-shadow: 0 0 0 3px rgba(185, 167, 216, 0.3);
+}
+
+/* Pesan salah (muncul lewat JS) */
+.salah {
+    display: none;
+    margin-top: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: #9B4D5A;
+}
+
+.salah.tampil { display: block; }
+
+/* Animasi getar (pakai keyframes goyang dari style.css) */
+.isian.goyang,
+.kartu-pin.goyang {
+    animation: goyang 0.45s ease-in-out 2;
+}
+
+/* Tombol lanjut di dalam kuis */
+.langkah .btn {
+    margin-top: 1.25rem;
+    width: 100%;
+    max-width: 220px;
+}
+
+/* =========================================================
+   KARTU TANGGAL LAHIR + PAPAN TOMBOL DI LAYAR
+   ========================================================= */
+.kartu-pin {
+    position: relative;
+    background: var(--latar);
+    border: 1px solid var(--garis);
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 1.5rem 1.15rem 1.25rem;
+    max-width: 320px;
+    margin: 0.4rem auto 0;
+}
+
+/* 8 kotak digit (dd-mm-yyyy tanpa strip) */
+.slot-digit {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+}
+
+.kotak-digit {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: var(--tinta);
+    background: var(--permukaan);
+    border: 1px solid var(--garis);
+    border-radius: 6px;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kotak-digit.terisi {
+    border-color: var(--ungu);
+    background: var(--permukaan);
+    box-shadow: 0 0 0 2px rgba(185, 167, 216, 0.2);
+}
+
+/* Papan angka 3 kolom — tombol minimalis */
+.papan-tombol {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 1.1rem;
+}
+
+.tombol-angka {
+    padding: 0.75rem 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: var(--tinta);
+    background: var(--permukaan);
+    border: 1px solid var(--garis);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.tombol-angka:hover {
+    background: var(--ungu-lembut);
+    border-color: var(--ungu);
+}
+
+.tombol-angka:active {
+    transform: scale(0.96);
+}
+
+.tombol-hapus {
+    color: var(--tinta-redup);
+    background: transparent;
+}
+
+.tombol-hapus:hover {
+    background: var(--ungu-lembut);
+    color: var(--tinta);
+}
+
+/* =========================================================
+   TOMBOL "LIHAT DISINI"
+   ========================================================= */
+.btn-lihat {
+    margin-top: 2rem;
+    font-size: 0.92rem;
+    padding: 1rem 2.6rem;
+    letter-spacing: 0.08em;
+    animation: denyut 2.4s ease-in-out infinite;
+}
+
+/* =========================================================
+   NOTA SUKSES
+   ========================================================= */
+#langkah-sukses {
+    background: var(--permukaan);
+    border: 1px solid var(--ungu);
+    box-shadow: var(--bayang-besar), 0 0 0 4px rgba(185, 167, 216, 0.15);
+    padding: 2.5rem 1.75rem 2.25rem;
+}
+
+#langkah-sukses .soal {
+    color: var(--ungu-tua);
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+@media (min-width: 768px) {
+    .sapaan {
+        font-size: 1.5rem;
+    }
+
+    .langkah {
+        padding: 2.5rem 2.25rem 2.25rem;
+    }
+
+    .halaman-kejutan {
+        padding: 4rem 1.5rem;
+    }
+}

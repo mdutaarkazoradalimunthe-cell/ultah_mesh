@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip Rahasia — Mesha</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- defer: kunci.js mengurus hitung mundur dan tombol setelah DOM siap -->
+    <script src="js/kunci.js" defer></script>
+</head>
+<body class="masuk">
+    <main class="halaman-index">
+        <header class="pembuka">
+            <!-- GANTI: kalimat pembuka -->
+            <h1 class="judul">Ada sesuatu untuk kamu</h1>
+            <p class="pengantar">Ada yang sedang aku simpan. Buka hanya kalau waktunya sudah tepat.</p>
+        </header>
+
+        <!-- Hitung mundur real time menuju 10 November 2026, diperbarui tiap detik -->
+        <section class="hitung-mundur" id="hitung-mundur" aria-label="Hitung mundur menuju waktu buka">
+            <div class="kotak">
+                <span class="angka" id="hari">00</span>
+                <span class="label">Hari</span>
+            </div>
+            <div class="kotak">
+                <span class="angka" id="jam">00</span>
+                <span class="label">Jam</span>
+            </div>
+            <div class="kotak">
+                <span class="angka" id="menit">00</span>
+                <span class="label">Menit</span>
+            </div>
+            <div class="kotak">
+                <span class="angka" id="detik">00</span>
+                <span class="label">Detik</span>
+            </div>
+        </section>
+
+        <p class="pemberitahuan">Arsip terkunci sampai 10 November 2026.</p>
+
+        <!-- Tombol: terkunci sampai waktunya; JS yang menentukan statusnya -->
+        <a href="kejutan.html" class="btn" id="tombol-buka" aria-disabled="true">Buka kejutan</a>
+    </main>
+
+    <!-- Toast peringatan buatan sendiri (bukan alert bawaan browser) -->
+    <p class="toast" id="toast" role="status" aria-live="polite">
+        Eits, belum boleh dibuka. Tunggu tanggal 10 November.
+    </p>
+</body>
+</html>
