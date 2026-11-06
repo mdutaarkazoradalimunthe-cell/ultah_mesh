@@ -10,7 +10,7 @@
      const WAKTU_BUKA = new Date(Date.now() + 2 * 60 * 1000); // +2 menit
      const WAKTU_BUKA = new Date(Date.now() - 1000);           // sudah lewat
    Kembalikan ke nilai asli setelah selesai menguji. */
-const WAKTU_BUKA = new Date(Date.now() - 1000); /* PREVIEW: sementara, kembalikan ke "2026-11-10T00:00:00+07:00" */
+const WAKTU_BUKA = new Date("2026-11-10T00:00:00+07:00");
 
 /* Apakah sekarang sudah lewat waktu buka? (waktu nyata, tanpa localStorage) */
 function sudahWaktunya() {
