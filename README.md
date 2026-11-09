@@ -73,7 +73,7 @@ localStorage, jadi pengecekan selalu berdasarkan waktu nyata.
 | Teks pembuka arsip & sapaan | `kejutan.html` — `<header class="judul-kejutan">` |
 | Soal 1 & 2 (jawaban bebas) | `kejutan.html` — `<div class="langkah" id="langkah-1/2">` |
 | Jawaban benar soal 3 (tanggal lahir) | `js/tebak.js` — konstanta `TANGGAL_LAHIR` (`"10112006"` = 10-11-2006) |
-| Link tombol "Lihat isinya" (web kedua / Canva) | `kejutan.html` — atribut `href` pada `<a class="btn btn-lihat">` |
+| Link tombol "Lihat disini" (web kedua / Canva) | `kejutan.html` — atribut `href` pada `<a class="btn btn-lihat">` |
 | Waktu arsip terbuka | `js/kunci.js` — `WAKTU_BUKA` |
 | Musik latar | `js/musik.js` — `NAMA_LAGU` + `MULAI_DETIK` + `src` `<audio>` di `kejutan.html` |
 | Warna | `css/style.css` — variabel di `:root` |
@@ -82,7 +82,7 @@ localStorage, jadi pengecekan selalu berdasarkan waktu nyata.
 
 - Halaman kejutan hanya berisi pembuka arsip + kuis tebak-tebakan
   3 langkah (2 soal essay bebas + tanggal lahir wajib benar). Tanpa
-  ucapan ulang tahun di situs ini. Tombol "Lihat isinya" (link web
+  ucapan ulang tahun di situs ini. Tombol "Lihat disini" (link web
   kedua di Canva, tempat ucapan berada) baru muncul setelah kuis
   selesai — tanpa gambar.
 - Desain **editorial elegan**: latar off-white keunguan, kartu putih,

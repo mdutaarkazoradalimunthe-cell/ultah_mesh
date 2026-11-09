@@ -87,19 +87,6 @@ img {
     z-index: 2;
 }
 
-/* Label kecil di atas judul — gaya editorial */
-.halaman-index .pembuka::before {
-    content: 'UNTSUR KEJUTAN';
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ungu-tua);
-    margin-bottom: 1.25rem;
-}
-
 .halaman-index .pembuka .judul {
     font-size: clamp(2rem, 7vw, 2.85rem);
     font-weight: 600;
@@ -195,7 +182,13 @@ img {
     background: #5C4A82;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(110, 90, 150, 0.28);
-    outline: none;
+}
+
+/* Indikator keyboard tetap ada; hanya fokus mouse yang tanpa outline */
+.btn:focus { outline: none; }
+.btn:focus-visible {
+    outline: 2px solid var(--ungu-tua);
+    outline-offset: 3px;
 }
 
 /* Status aktif: waktu sudah tiba */

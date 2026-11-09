@@ -14,13 +14,24 @@ const musik = document.getElementById("musik-latar");
 let sudahCobaDengar = false;
 
 /* Pasang listener sekali-pakai: browser kadang menolak play()
-   karena kebijakan autoplay → nyalakan pada sentuhan berikutnya */
+   karena kebijakan autoplay → nyalakan pada sentuhan berikutnya.
+   Begitu SATU jenis event fire, ketiganya dilepas supaya tidak menggantung. */
 function dengarSaatSentuhPertama() {
-    ["pointerdown", "touchstart", "keydown"].forEach(function (jenis) {
-        window.addEventListener(jenis, function sentuh() {
+    const daftar = ["pointerdown", "touchstart", "keydown"];
+
+    function lepasSemua() {
+        daftar.forEach(function (jenis) {
             window.removeEventListener(jenis, sentuh);
-            nyalakanMusik();
-        }, { once: true, passive: true });
+        });
+    }
+
+    function sentuh() {
+        lepasSemua();
+        nyalakanMusik();
+    }
+
+    daftar.forEach(function (jenis) {
+        window.addEventListener(jenis, sentuh, { passive: true });
     });
 }
 

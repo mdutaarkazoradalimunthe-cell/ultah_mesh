@@ -80,6 +80,8 @@ function gambarDigit() {
     });
 }
 
+let sedangGoyang = false; /* true selama animasi getar setelah PIN salah */
+
 function cekTanggal() {
     if (digit.length < PANJANG_PIN) return;
 
@@ -93,9 +95,11 @@ function cekTanggal() {
     /* Salah: getar + pesan, lalu kotak dikosongkan */
     goyang($("#kartu-pin"));
     pesanSalah("salah-3", true);
+    sedangGoyang = true;
     setTimeout(function () {
         digit = "";
         gambarDigit();
+        sedangGoyang = false;
     }, 450);
 }
 
@@ -106,6 +110,9 @@ function pasangPapanTombol() {
     papan.addEventListener("click", function (e) {
         const tombol = e.target.closest("button");
         if (!tombol) return;
+
+        /* Abaikan semua input selama getar — cegah ketikan user ikut terhapus */
+        if (sedangGoyang) return;
 
         pesanSalah("salah-3", false);
 
